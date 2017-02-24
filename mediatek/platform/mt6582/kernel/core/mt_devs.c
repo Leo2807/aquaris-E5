@@ -684,7 +684,7 @@ static struct platform_device mt_hid_dev = {
     .name = "hid-keyboard",
     .id   = -1,
 };
-#endif 
+#endif
 
 /*=======================================================================*/
 /* UIBC input device, add by Seraph                                      */
@@ -695,7 +695,7 @@ static struct platform_device mt_uibc_dev = {
     .name = "uibc",
     .id   = -1,
 };
-#endif 
+#endif
 
 /*=======================================================================*/
 /* MT6575 Touch Panel                                                    */
@@ -1033,7 +1033,7 @@ static void cmdline_filter(struct tag *cmdline_tag, char *default_cmdline)
 	    	    if (memcmp(cs, undesired_cmds[i], strlen(undesired_cmds[i])) == 0) {
 			ck_f = 1;
                         break;
-                    }    		
+                    }
 	    	}
 
                 if(ck_f == 0){
@@ -1080,22 +1080,22 @@ static int __init parse_tag_devinfo_data_fixup(const struct tag *tags)
 
 extern unsigned int mtkfb_parse_dfo_setting(void *dfo_tbl, int num);
 int indexOf(char *str1,char *str2)  //dongyin
-{  
-    char *p=str1;  
-    int i=0;  
-    p=strstr(str1,str2);  
-    if(p==NULL)  
-        return -1;  
-    else{  
-        while(str1!=p)  
-        {  
-            str1++;  
-            i++;  
-        }  
-    }  
-    return i;  
-}  
- 
+{
+    char *p=str1;
+    int i=0;
+    p=strstr(str1,str2);
+    if(p==NULL)
+        return -1;
+    else{
+        while(str1!=p)
+        {
+            str1++;
+            i++;
+        }
+    }
+    return i;
+}
+
 void mt_fixup(struct tag *tags, char **cmdline, struct meminfo *mi)
 {
     struct tag *cmdline_tag = NULL;
@@ -1175,7 +1175,7 @@ void mt_fixup(struct tag *tags, char **cmdline, struct meminfo *mi)
             printk(KERN_ALERT "md_inf[3]=%d\n",tags->u.mdinfo_data.md_type[3]);
             md_inf_from_meta[0]=tags->u.mdinfo_data.md_type[0];
             md_inf_from_meta[1]=tags->u.mdinfo_data.md_type[1];
-            md_inf_from_meta[2]=tags->u.mdinfo_data.md_type[2]; 
+            md_inf_from_meta[2]=tags->u.mdinfo_data.md_type[2];
             md_inf_from_meta[3]=tags->u.mdinfo_data.md_type[3];
         }
     }
@@ -1202,7 +1202,7 @@ void mt_fixup(struct tag *tags, char **cmdline, struct meminfo *mi)
 #endif
 
     if ((g_boot_mode == META_BOOT) || (g_boot_mode == ADVMETA_BOOT)) {
-        /* 
+        /*
          * Always use default dfo setting in META mode.
          * We can fix abnormal dfo setting this way.
          */
@@ -1253,20 +1253,20 @@ void mt_fixup(struct tag *tags, char **cmdline, struct meminfo *mi)
             "[PHY layout]FB       :   0x%llx - 0x%llx  (0x%llx)\n",
             (unsigned long long)bl_mem_sz,
             (unsigned long long)kernel_mem_sz,
-            (unsigned long long)FB_START, 
-            (unsigned long long)(FB_START + FB_SIZE - 1), 
+            (unsigned long long)FB_START,
+            (unsigned long long)(FB_START + FB_SIZE - 1),
             (unsigned long long)FB_SIZE);
     if(g_boot_mode == FACTORY_BOOT)
         MTK_MEMCFG_LOG_AND_PRINTK(KERN_ALERT
                 "[PHY layout]3D       :   0x%llx - 0x%llx  (0x%llx)\n",
-                (unsigned long long)TEST_3D_START, 
-                (unsigned long long)(TEST_3D_START + TEST_3D_SIZE - 1), 
+                (unsigned long long)TEST_3D_START,
+                (unsigned long long)(TEST_3D_START + TEST_3D_SIZE - 1),
                 (unsigned long long)TEST_3D_SIZE);
     if (PMEM_MM_SIZE) {
         MTK_MEMCFG_LOG_AND_PRINTK(KERN_ALERT
                 "[PHY layout]PMEM     :   0x%llx - 0x%llx  (0x%llx)\n",
-                (unsigned long long)PMEM_MM_START, 
-                (unsigned long long)(PMEM_MM_START + PMEM_MM_SIZE - 1), 
+                (unsigned long long)PMEM_MM_START,
+                (unsigned long long)(PMEM_MM_START + PMEM_MM_SIZE - 1),
                 (unsigned long long)PMEM_MM_SIZE);
     }
 
@@ -1306,7 +1306,7 @@ void mt_fixup(struct tag *tags, char **cmdline, struct meminfo *mi)
 	       {
 	           memcpy(serial_number, "0123456789ABCDEF", 16);
 	       }
-		
+
         /* Use the default cmdline */
         memcpy((void*)cmdline_tag,
                (void*)tag_next(cmdline_tag),
@@ -1514,8 +1514,8 @@ static struct platform_device mt_extmem = {
 /* Sim switch driver                                                         */
 /*=======================================================================*/
 #if defined (CUSTOM_KERNEL_SSW)
-static struct platform_device ssw_device = {	
-	.name = "sim-switch",	
+static struct platform_device ssw_device = {
+	.name = "sim-switch",
 	.id = -1};
 #endif
 
@@ -1670,7 +1670,7 @@ __init int mt_board_init(void)
     printk("register 8193_CKGEN device\n");
     retval = platform_device_register(&mtk_ckgen_dev);
     if (retval != 0){
-        
+
         printk("register 8193_CKGEN device FAILS!\n");
         return retval;
     }
@@ -1734,7 +1734,7 @@ if (retval != 0) {
     	    	{
     	    		  printk(KERN_ALERT"FB address or size not match - do not support now(3)\n");
     	    	}
-    	    	else 
+    	    	else
     	    	{
     	    	    mtkfb_set_fb_lk((unsigned long long)bl_fb.base,
 		                		        (unsigned long long)bl_fb.size);
@@ -1758,7 +1758,7 @@ if (retval != 0) {
 
     resource_fb[0].start = FB_START;
     resource_fb[0].end   = FB_START + FB_SIZE - 1;
-        
+
     printk(KERN_ALERT"FB start: 0x%x end: 0x%x\n", resource_fb[0].start,
                                          resource_fb[0].end);
 
@@ -1791,7 +1791,7 @@ if (retval != 0) {
 
 
 
-    
+
 
 #if defined(MTK_TVOUT_SUPPORT)
     retval = platform_device_register(&mt6575_TVOUT_dev);
@@ -2100,20 +2100,20 @@ retval = platform_device_register(&dummychar_device);
 	}
 //#endif
 
-#if defined (CUSTOM_KERNEL_SSW)	
-	retval = platform_device_register(&ssw_device);    
-	if (retval != 0) {        
-		return retval;    
+#if defined (CUSTOM_KERNEL_SSW)
+	retval = platform_device_register(&ssw_device);
+	if (retval != 0) {
+		return retval;
 	}
 #endif
 
-#ifdef CONFIG_MTK_USE_RESERVED_EXT_MEM	
+#ifdef CONFIG_MTK_USE_RESERVED_EXT_MEM
 	retval = platform_device_register(&mt_extmem);
-	
+
 	printk("%s[%d] ret: %d\n", __FILE__, __LINE__, retval);
 	if (retval != 0){
 		return retval;
-	}	
+	}
 #endif
 
     retval = platform_device_register(&masp_device);
@@ -2174,31 +2174,42 @@ void __weak mtk_wcn_consys_memory_reserve(void)
     printk(KERN_ERR"weak reserve function: %s", __FUNCTION__);
 }
 
-void __weak eemcs_memory_reserve(void) 
+void __weak eemcs_memory_reserve(void)
 {
     printk(KERN_ERR"calling weak function %s\n", __FUNCTION__);
 }
 
 void mt_reserve(void)
 {
+
 //    aee_dram_console_reserve_memory();
     mrdump_reserve_memory();
 
 #if defined(CONFIG_MTK_RAM_CONSOLE_USING_DRAM)
+#ifdef CONFIG_KEXEC_HARDBOOT
+	// Reserve space for hardboot page, just before the ram_console
+	struct membank* bank = &meminfo.bank[0];
+	phys_addr_t start = bank->start + bank->size - SZ_1M - CONFIG_MTK_RAM_CONSOLE_DRAM_SIZE;
+	int ret = memblock_remove(start, SZ_1M);
+	if(!ret)
+		pr_info("Hardboot page reserved at 0x%X\n", start);
+	else
+		pr_err("Failed to reserve space for hardboot page at 0x%X!\n", start);
+#endif // CONFIG_KEXEC_HARDBOOT
     memblock_reserve(CONFIG_MTK_RAM_CONSOLE_DRAM_ADDR, CONFIG_MTK_RAM_CONSOLE_DRAM_SIZE);
-#endif
+#endif // CONFIG_MTK_RAM_CONSOLE_USING_DRAM
 
     /* 
-     * Dynamic reserved memory (by arm_memblock_steal) 
+     * Dynamic reserved memory (by arm_memblock_steal)
      *
      * *** DO NOT CHANGE THE RESERVE ORDER ***
      *
-     * New memory reserve functions should be APPENDED to old funtions 
+     * New memory reserve functions should be APPENDED to old funtions
      */
     mtk_wcn_consys_memory_reserve();
     ccci_md_mem_reserve();
 #if defined(CONFIG_MTK_EEMCS_DEVICES)
     eemcs_memory_reserve();
-#endif    
+#endif
     /* Last line of dynamic reserve functions */
 }
